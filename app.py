@@ -7,6 +7,7 @@ from langchain.llms import CTransformers
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
+from langchain.llms import Replicate
 
 # Function to load documents 
 def load_documents():
@@ -32,7 +33,11 @@ def create_vector_store(text_chunks, embeddings):
 
 # Function to create LLMS model
 def create_llms_model():
-    llm = CTransformers(model="TheBloke/Llama-2-13B-GGML", config={'max_new_tokens': 1024, 'temperature': 0.01})
+    llm = Replicate(
+        streaming = True,
+        model = "replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781", 
+        callbacks=[StreamingStdOutCallbackHandler()],
+        input = {"temperature": 0.01, "max_length" :500,"top_p":1})
     return llm
 
 # Initialize Streamlit app
