@@ -10,3 +10,4 @@ huggingface-hub
 pypdf
 ctransformers
 Replicate
+python-dotenv
