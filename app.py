@@ -8,7 +8,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.llms import Replicate
-from python-dotenv import load_dotenv
+from dotenv import load_dotenv
 
 load_dotenv()
 # Function to load documents 
