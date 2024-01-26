@@ -9,5 +9,4 @@ tiktoken
 huggingface-hub
 pypdf
 ctransformers
-dotenv
 Replicate
