@@ -8,7 +8,9 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.llms import Replicate
+from dotenv import load_dotenv
 
+load_dotenv()
 # Function to load documents 
 def load_documents():
     loader = DirectoryLoader('data/', glob="*.pdf", loader_cls=PyPDFLoader)
@@ -33,6 +35,7 @@ def create_vector_store(text_chunks, embeddings):
 
 # Function to create LLMS model
 def create_llms_model():
+    load_dotenv()
     llm = Replicate(
         streaming = True,
         model = "replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781", 
